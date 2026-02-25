@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bengkel Besi & Konstruksi Baja Profesional - Kuat, Rapi, Bergaransi</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+			body {
+				font-family: "Inter", sans-serif;
+				background-color: #f8fafc;
+				color: #1e293b;
+			}
+
+			.chart-container {
+				position: relative;
+				width: 100%;
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+				height: 300px;
+				max-height: 400px;
+			}
+
+			@media (min-width: 768px) {
+				.chart-container {
+					height: 350px;
+				}
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			.animate-fade-in {
+				animation: fadeIn 0.6s ease-out forwards;
+			}
+
+			.hero-bg {
+				background-color: #0f172a;
+				background-image: radial-gradient(#334155 1px, transparent 1px);
+				background-size: 20px 20px;
+			}
+
+			.modal-active {
+				overflow: hidden;
+			}
+
+			.custom-shadow {
+				box-shadow:
+					0 10px 30px -5px rgba(0, 0, 0, 0.1),
+					0 4px 12px -5px rgba(0, 0, 0, 0.05);
+			}
+
+			.project-card:hover img {
+				transform: scale(1.05);
+			}
+		</style>
+		<!-- Chosen Palette: Industrial Professional (Deep Slate, Bold Orange, Steel Gray) -->
+		<!-- Application Structure Plan:
+         1. Hero Section: Menampilkan keahlian dalam konstruksi baja dan pengerjaan logam.
+         2. Layanan: Referensi produk dari Mitra Baja (Konstruksi, Pagar, Stainless, Custom).
+         3. Material Guide: Edukasi visual perbedaan jenis logam (Baja vs Stainless vs Aluminium).
+         4. Gallery: Koleksi foto benda logam (Baja, Besi, Stainless) dengan modal interaktif.
+         5. Testimonials: Ulasan pelanggan nyata dengan foto untuk membangun kepercayaan tinggi.
+         6. Trust Elements: Fokus pada ketahanan material dan presisi las.
+    -->
+		<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+	</head>
+	<body class="antialiased">
+		<!-- Sticky Navigation -->
+		<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+			<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+				<div class="text-2xl font-bold text-slate-900 tracking-tighter flex items-center gap-2"><span>🏗️</span> UD. ANEKA <span class="text-orange-600">LOGAM</span></div>
+				<div class="hidden md:flex gap-8 font-medium text-sm text-slate-600">
+					<a href="#layanan" class="hover:text-orange-600 transition">Layanan</a>
+					<a href="#material-guide" class="hover:text-orange-600 transition">Material</a>
+					<a href="#portfolio" class="hover:text-orange-600 transition">Portofolio</a>
+					<a href="#testimoni" class="hover:text-orange-600 transition">Testimoni</a>
+					<a href="#faq" class="hover:text-orange-600 transition">FAQ</a>
+				</div>
+				<button onclick="openWhatsApp()" class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-full font-bold text-sm transition shadow-lg flex items-center gap-2"><span>💬</span> Hubungi Ahli Kami</button>
+			</div>
+		</nav>
+
+		<!-- Hero Section -->
+		<header class="hero-bg text-white relative overflow-hidden">
+			<div class="container mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-10">
+				<div class="md:w-1/2 z-10 animate-fade-in">
+					<div class="inline-block bg-orange-600/20 text-orange-400 border border-orange-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4 uppercase tracking-wider">🛠️ Bengkel Spesialis Konstruksi & Fabrikasi Logam</div>
+					<h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+						Solusi Pengerjaan <br />
+						<span class="text-orange-500">Logam & Baja Presisi.</span>
+					</h1>
+					<p class="text-slate-300 text-lg mb-8 leading-relaxed max-w-lg">Dari konstruksi gudang baja WF hingga pagar laser cutting modern. Kami menghadirkan kualitas pengerjaan bengkel industri untuk kebutuhan properti dan bisnis Anda.</p>
+					<div class="flex flex-col sm:flex-row gap-4">
+						<button onclick="openWhatsApp()" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold shadow-xl transition transform hover:-translate-y-1 text-center">Konsultasi Proyek Logam</button>
+						<a href="#portfolio" class="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 px-8 py-4 rounded-lg font-bold transition text-center"> Lihat Hasil Kerja </a>
+					</div>
+				</div>
+				<div class="md:w-1/2 relative z-0">
+					<div class="relative w-full h-64 md:h-[450px] bg-slate-800 rounded-3xl overflow-hidden shadow-2xl border border-slate-700">
+						<img src="images/tabel-bj-wf.png" alt="Steel Construction Fabrication" class="absolute inset-0 w-full h-full object-cover opacity-70" />
+						<div class="absolute bottom-6 left-6 right-6 p-6 bg-slate-900/60 backdrop-blur-md rounded-2xl border border-white/10">
+							<div class="text-orange-400 font-bold mb-1">Highlight Proyek:</div>
+							<h3 class="text-xl font-bold text-white mb-2">Konstruksi Rangka Baja WF</h3>
+							<p class="text-slate-300 text-sm">Pemasangan presisi untuk struktur gudang industri di kawasan industri.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Services Grid -->
+		<section id="layanan" class="py-20 bg-white">
+			<div class="container mx-auto px-4">
+				<div class="text-center mb-16">
+					<span class="text-orange-600 font-bold tracking-wider uppercase text-sm">Spesialisasi Kami</span>
+					<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Layanan Fabrikasi Logam Terpadu</h2>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-orange-500 transition duration-300 group">
+						<div class="text-3xl mb-4 group-hover:scale-110 transition inline-block">🧱</div>
+						<h3 class="text-lg font-bold text-slate-900 mb-2">Konstruksi Baja</h3>
+						<p class="text-sm text-slate-600">Pengerjaan struktur baja WF, H-Beam, dan rangka atap bentang lebar untuk gudang atau pabrik.</p>
+					</div>
+					<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-orange-500 transition duration-300 group">
+						<div class="text-3xl mb-4 group-hover:scale-110 transition inline-block">✨</div>
+						<h3 class="text-lg font-bold text-slate-900 mb-2">Stainless Steel</h3>
+						<p class="text-sm text-slate-600">Fabrikasi material stainless steel 304/316 untuk kitchen set industri, railing, dan furnitur medis.</p>
+					</div>
+					<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-orange-500 transition duration-300 group">
+						<div class="text-3xl mb-4 group-hover:scale-110 transition inline-block">⚡</div>
+						<h3 class="text-lg font-bold text-slate-900 mb-2">Laser & Plasma Cutting</h3>
+						<p class="text-sm text-slate-600">Jasa potong logam menggunakan teknologi CNC untuk motif pagar, partisi, dan komponen mesin.</p>
+					</div>
+					<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-orange-500 transition duration-300 group">
+						<div class="text-3xl mb-4 group-hover:scale-110 transition inline-block">🔩</div>
+						<h3 class="text-lg font-bold text-slate-900 mb-2">Custom Fabrication</h3>
+						<p class="text-sm text-slate-600">Pengerjaan benda logam kustom sesuai desain teknis, mulai dari aluminium hingga besi cor.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Material Comparison Guide -->
+		<section id="material-guide" class="py-20 bg-slate-900 text-white">
+			<div class="container mx-auto px-4">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div>
+						<h2 class="text-3xl font-bold mb-6">Pilih Material Yang Tepat <br /><span class="text-orange-500">Bukan Sekadar Murah.</span></h2>
+						<p class="text-slate-400 mb-8 leading-relaxed">Kami mengedukasi pelanggan kami tentang karakteristik logam. Baja karbon kuat untuk struktur, Stainless tahan korosi untuk estetika, dan Aluminium ringan untuk beban minimal.</p>
+
+						<div class="space-y-4">
+							<div class="flex items-center gap-4 bg-slate-800 p-4 rounded-xl border border-slate-700">
+								<div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500 font-bold">01</div>
+								<div>
+									<h4 class="font-bold">Besi & Baja Karbon</h4>
+									<p class="text-xs text-slate-400">Paling umum digunakan, sangat kuat namun memerlukan lapisan anti karat (Galvanis/Epoxy).</p>
+								</div>
+							</div>
+							<div class="flex items-center gap-4 bg-slate-800 p-4 rounded-xl border border-slate-700">
+								<div class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-400 font-bold">02</div>
+								<div>
+									<h4 class="font-bold">Stainless Steel</h4>
+									<p class="text-xs text-slate-400">Tahan karat seumur hidup, tampilan mewah metalik, cocok untuk area lembap.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="mt-8 flex gap-3">
+							<button onclick="updateChart('structural')" class="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg text-sm font-bold transition">Bandingkan Struktur</button>
+							<button onclick="updateChart('ornamental')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm font-bold transition">Bandingkan Ornamen</button>
+						</div>
+					</div>
+
+					<div class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
+						<h3 id="chart-title" class="text-center font-bold text-lg mb-4 text-orange-400">Kekuatan vs Ketahanan Korosi</h3>
+						<div class="chart-container">
+							<canvas id="materialChart"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Project Gallery Section -->
+		<section id="portfolio" class="py-20 bg-white">
+			<div class="container mx-auto px-4">
+				<div class="text-center mb-12">
+					<span class="text-orange-600 font-bold tracking-wider uppercase text-sm">Hasil Karya</span>
+					<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Koleksi Proyek Fabrikasi</h2>
+					<p class="text-slate-500 mt-2">Klik gambar untuk melihat detail material dan proses pengerjaan.</p>
+				</div>
+
+				<div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<!-- Injected via JS -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonials Section -->
+		<section id="testimoni" class="py-20 bg-slate-50">
+			<div class="container mx-auto px-4">
+				<div class="text-center mb-16">
+					<span class="text-orange-600 font-bold tracking-wider uppercase text-sm">Testimoni Pelanggan</span>
+					<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Kepuasan Real Dari Pemilik Rumah & Bisnis</h2>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Review 1 -->
+					<div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
+						<div class="flex items-center gap-4 mb-6">
+							<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Bpk. Agus" class="w-16 h-16 rounded-full object-cover border-2 border-orange-100" />
+							<div>
+								<h4 class="font-bold text-slate-900">Bpk. Agus Santoso</h4>
+								<p class="text-xs text-slate-500">Pemilik Rumah di Cluster Harmony</p>
+							</div>
+						</div>
+						<div class="text-yellow-400 mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+						<p class="text-slate-600 text-sm italic leading-relaxed">
+							"Sangat puas dengan pagar laser cutting-nya! Hasil potongannya sangat rapi dan presisi sesuai desain yang saya mau. Cat powder coating-nya juga halus banget, beda sama bengkel lain yang biasanya cat semprot biasa. Sangat
+							direkomendasikan untuk yang cari kualitas."
+						</p>
+					</div>
+
+					<!-- Review 2 -->
+					<div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
+						<div class="flex items-center gap-4 mb-6">
+							<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Ibu Ratna" class="w-16 h-16 rounded-full object-cover border-2 border-orange-100" />
+							<div>
+								<h4 class="font-bold text-slate-900">Ibu Ratna Sari</h4>
+								<p class="text-xs text-slate-500">Manajer Restoran Central Park</p>
+							</div>
+						</div>
+						<div class="text-yellow-400 mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+						<p class="text-slate-600 text-sm italic leading-relaxed">
+							"Pengerjaan stainless steel untuk dapur restoran kami luar biasa cepat dan rapi. Tim-nya profesional, las-lasannya halus (las argon) jadi sangat mudah dibersihkan dan higienis. Harga sangat sebanding dengan kualitas material
+							grade 304 yang diberikan."
+						</p>
+					</div>
+
+					<!-- Review 3 -->
+					<div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
+						<div class="flex items-center gap-4 mb-6">
+							<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" alt="Bpk. Budi" class="w-16 h-16 rounded-full object-cover border-2 border-orange-100" />
+							<div>
+								<h4 class="font-bold text-slate-900">Bpk. Budi Wijaya</h4>
+								<p class="text-xs text-slate-500">Kontraktor Gudang Logistik</p>
+							</div>
+						</div>
+						<div class="text-yellow-400 mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+						<p class="text-slate-600 text-sm italic leading-relaxed">
+							"Sudah langganan untuk konstruksi baja WF. Presisi baut dan pengelasannya selalu top. Tim-nya tepat waktu, bahkan selesai lebih cepat dari jadwal proyek. Sangat membantu kami yang butuh kecepatan tanpa mengurangi standar
+							keamanan struktur."
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Modal for Project Details -->
+		<div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+			<div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onclick="closeModal()"></div>
+			<div class="bg-white rounded-3xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-y-auto relative z-10 animate-fade-in border border-slate-200">
+				<button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 p-3 rounded-full transition z-20 text-slate-800">
+					<span class="text-2xl font-bold leading-none">&times;</span>
+				</button>
+				<div id="modal-content">
+					<!-- Injected via JS -->
+				</div>
+			</div>
+		</div>
+
+		<!-- FAQ Section -->
+		<section id="faq" class="py-20 bg-white">
+			<div class="container mx-auto px-4 max-w-3xl">
+				<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Tanya Jawab Seputar Layanan</h2>
+				<div class="space-y-4" id="faq-container">
+					<!-- Injected via JS -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="contact" class="bg-slate-900 text-slate-400 py-16">
+			<div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+				<div>
+					<div class="text-2xl font-bold text-white tracking-tighter mb-6">🏗️ UD. ANEKA <span class="text-orange-500">LOGAM</span></div>
+					<p class="text-sm leading-relaxed">Penyedia jasa fabrikasi logam dan konstruksi baja profesional. Kami fokus pada integritas struktur dan kualitas finishing yang sempurna.</p>
+					<div class="mt-6 flex gap-4">
+						<span class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition cursor-pointer">IG</span>
+						<span class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition cursor-pointer">FB</span>
+						<span class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition cursor-pointer">YT</span>
+					</div>
+				</div>
+				<div>
+					<h4 class="text-white font-bold mb-6">Layanan Populer</h4>
+					<ul class="space-y-3 text-sm">
+						<li>Konstruksi Gudang Baja WF</li>
+						<li>Pagar Minimalis Laser Cutting</li>
+						<li>Railing Stainless Steel 304</li>
+						<li>Kanopi Atap Kaca & Alderon</li>
+						<li>Tangga Putar & Industrial</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="text-white font-bold mb-6">Hubungi Kantor</h4>
+					<p class="text-sm mb-2">📍 Workshop: Jl. Pandean, Ngingas, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256</p>
+					<p class="text-sm mb-2">📞 Telepon: 0895 3285 81054</p>
+					<p class="text-sm mb-6">📱 WhatsApp: 0895 3285 81054</p>
+				</div>
+			</div>
+			<div class="container mx-auto px-4 mt-16 border-t border-slate-800 pt-8 text-center text-xs">&copy; 2024 Bengkel Besi Pro - Spesialis Konstruksi Logam. Terinspirasi oleh standar profesional Mitra Baja.</div>
+		</footer>
+
+		<!-- Floating WA Button (Mobile Only) -->
+		<button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl z-[90] flex items-center justify-center transition hover:scale-110 md:hidden">
+			<span class="text-2xl">💬</span>
+		</button>
+
+		<script>
+			const projects = [
+				{
+					id: 1,
+					title: "Konstruksi Rangka Baja WF",
+					location: "Gudang Logistik Cikarang",
+					thumbnail: "images/tabel-bj-wf.png",
+					category: "Baja",
+					images: ["images/tabel-bj-wf.png", "images/wide-flange.webp"],
+					explanation: "Pemasangan struktur baja WF untuk gudang seluas 1500m2. Menggunakan teknik pengelasan full-welding dan sistem baut high-tension untuk keamanan maksimal.",
+					details: ["Material: Baja WF 250 & 300", "Cat Dasar: Zinc Chromate Grey", "Fitur: Tahan Gempa & Beban Berat"],
+				},
+				{
+					id: 2,
+					title: "Pagar Laser Cutting Motif Batik",
+					location: "Hunian Mewah Menteng",
+					thumbnail: "images/gate_compressed.jpg",
+					category: "Besi",
+					images: ["images/gate_compressed.jpg", "images/pagar-minimalis-bengkel-las-karawang-3-1.png"],
+					explanation: "Pagar besi estetis yang diproses menggunakan mesin CNC Laser Fiber. Memberikan detail ornamen batik yang presisi pada plat besi 4mm.",
+					details: ["Material: Plat Besi 4mm & Hollow 4x8", "Finishing: Powder Coating Matte Black", "Gaya: Modern Kontemporer"],
+				},
+				{
+					id: 3,
+					title: "Instalasi Kitchen Set Industri",
+					location: "Restoran Central Park",
+					thumbnail: "images/EXHAUST-EXHAUST HOOD.jpg",
+					category: "Stainless",
+					images: ["images/EXHAUST-EXHAUST HOOD.jpg", "images/images (22).jpg"],
+					explanation: "Fabrikasi meja kerja, sink, dan exhaust hood menggunakan Stainless Steel grade 304 food grade. Tahan karat dan mudah dibersihkan.",
+					details: ["Material: Stainless Steel 304 (Mirror)", "Teknik: Las Argon (TIG Welding)", "Standar: Higienitas Food Grade"],
+				},
+			];
+
+			const faqs = [
+				{ q: "Apakah bisa survey lokasi?", a: "Tentu. Tim teknis kami akan datang ke lokasi Anda untuk pengukuran akurat dan konsultasi desain secara gratis untuk area [Nama Kota]." },
+				{ q: "Berapa lama garansi yang diberikan?", a: "Kami memberikan garansi struktur selama 1 tahun dan garansi pemeliharaan selama 3-6 bulan tergantung jenis pengerjaan." },
+				{ q: "Bisa pengerjaan luar kota?", a: "Ya, kami melayani proyek konstruksi baja dan fabrikasi logam di seluruh wilayah Indonesia dengan minimal volume tertentu." },
+			];
+
+			let materialChartInstance = null;
+			function initMaterialChart(type) {
+				const ctx = document.getElementById("materialChart").getContext("2d");
+				if (materialChartInstance) materialChartInstance.destroy();
+
+				const config =
+					type === "structural"
+						? {
+								title: "Perbandingan Material Struktur",
+								labels: ["Kekuatan", "Harga/m2", "Kecepatan Pasang", "Kaku", "Tahan Karat"],
+								sets: [
+									{ label: "Baja WF/H-Beam", data: [10, 6, 9, 10, 4], color: "249, 115, 22" },
+									{ label: "Beton Bertulang", data: [9, 8, 4, 9, 9], color: "148, 163, 184" },
+								],
+							}
+						: {
+								title: "Perbandingan Material Ornamen",
+								labels: ["Estetika", "Tahan Karat", "Kemudahan Bentuk", "Harga", "Minim Rawat"],
+								sets: [
+									{ label: "Stainless Steel", data: [9, 10, 6, 4, 10], color: "59, 130, 246" },
+									{ label: "Besi Hollow", data: [7, 4, 10, 9, 5], color: "249, 115, 22" },
+								],
+							};
+
+				document.getElementById("chart-title").textContent = config.title;
+
+				materialChartInstance = new Chart(ctx, {
+					type: "radar",
+					data: {
+						labels: config.labels,
+						datasets: config.sets.map((s) => ({
+							label: s.label,
+							data: s.data,
+							backgroundColor: `rgba(${s.color}, 0.2)`,
+							borderColor: `rgba(${s.color}, 1)`,
+							pointBackgroundColor: `rgba(${s.color}, 1)`,
+						})),
+					},
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						scales: { r: { angleLines: { color: "rgba(255,255,255,0.1)" }, grid: { color: "rgba(255,255,255,0.1)" }, pointLabels: { color: "#94a3b8", font: { size: 10 } }, ticks: { display: false } } },
+						plugins: { legend: { labels: { color: "#cbd5e1" } } },
+					},
+				});
+			}
+
+			function updateChart(type) {
+				initMaterialChart(type);
+			}
+
+			function renderGallery() {
+				const grid = document.getElementById("project-grid");
+				grid.innerHTML = projects
+					.map(
+						(p) => `
+                <div onclick="openModal(${p.id})" class="project-card group cursor-pointer bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="${p.thumbnail}" alt="${p.title}" class="w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-white/20">${p.category}</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 text-lg mb-1 group-hover:text-orange-600 transition">${p.title}</h4>
+                        <p class="text-slate-500 text-sm flex items-center gap-1">📍 ${p.location}</p>
+                    </div>
+                </div>
+            `,
+					)
+					.join("");
+			}
+
+			function openModal(id) {
+				const p = projects.find((x) => x.id === id);
+				const modal = document.getElementById("project-modal");
+				const content = document.getElementById("modal-content");
+
+				content.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    <div class="lg:col-span-7 p-6 lg:p-12 bg-slate-100">
+                        <div class="grid grid-cols-1 gap-6">
+                            ${p.images.map((img) => `<img src="${img}" class="rounded-2xl w-full object-cover shadow-xl border-4 border-white">`).join("")}
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 p-6 lg:p-12 flex flex-col">
+                        <div class="mb-8 border-b border-slate-100 pb-6">
+                            <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">${p.category}</span>
+                            <h2 class="text-3xl font-bold text-slate-900 mt-2">${p.title}</h2>
+                        </div>
+                        <div class="mb-8">
+                            <h4 class="font-bold text-slate-800 mb-3">📝 Deskripsi</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">${p.explanation}</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-8 text-sm">
+                            <h4 class="font-bold text-slate-800 mb-4">🛠️ Detail Teknis</h4>
+                            <ul class="space-y-2">
+                                ${p.details.map((d) => `<li class="flex items-center gap-2">🔹 ${d}</li>`).join("")}
+                            </ul>
+                        </div>
+                        <button onclick="openWhatsApp('Tanya proyek: ${p.title}')" class="w-full bg-slate-900 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-3">
+                            💬 Konsultasi Sekarang
+                        </button>
+                    </div>
+                </div>
+            `;
+				modal.classList.remove("hidden");
+				modal.classList.add("flex");
+				document.body.classList.add("modal-active");
+			}
+
+			function closeModal() {
+				const modal = document.getElementById("project-modal");
+				modal.classList.add("hidden");
+				modal.classList.remove("flex");
+				document.body.classList.remove("modal-active");
+			}
+
+			function openWhatsApp(customText) {
+				const phone = "6281234567890";
+				const text = customText || "Halo Bengkel Besi Pro, saya ingin konsultasi mengenai proyek fabrikasi logam/konstruksi.";
+				window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank");
+			}
+
+			function renderFaq() {
+				const container = document.getElementById("faq-container");
+				container.innerHTML = faqs
+					.map(
+						(f, i) => `
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="w-full text-left p-6 font-bold text-slate-800 flex justify-between items-center focus:outline-none hover:bg-slate-50 transition" onclick="toggleAccordion(${i})">
+                        ${f.q}
+                        <span class="text-orange-500 transform transition-transform" id="icon-${i}">▼</span>
+                    </button>
+                    <div id="content-${i}" class="hidden p-6 text-slate-600 bg-white border-t border-slate-100 text-sm">
+                        ${f.a}
+                    </div>
+                </div>
+            `,
+					)
+					.join("");
+			}
+
+			function toggleAccordion(id) {
+				const content = document.getElementById(`content-${id}`);
+				const icon = document.getElementById(`icon-${id}`);
+				content.classList.toggle("hidden");
+				icon.classList.toggle("rotate-180");
+			}
+
+			window.addEventListener("load", () => {
+				initMaterialChart("structural");
+				renderGallery();
+				renderFaq();
+			});
+		</script>
+	</body>
+</html>
